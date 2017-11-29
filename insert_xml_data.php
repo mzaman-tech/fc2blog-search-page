@@ -15,7 +15,7 @@ foreach($XML->item as $item) {
 	$user_name = NULL;
 	$server_number = 0;
 	$entry_number = 0;
-	$date = date('Y-m-d H:i:s');
+	$date = date('Y-m-d');
 	
 	//processing user_name, server_number, entry_number 
 	
