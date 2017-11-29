@@ -81,8 +81,8 @@
 
  <div class="container text-center">
  	<ul class="pagination pagination-md">
-	    <li><a href="{if $page != 1}index.php?page={$page - 1}{/if}" class="{if $page == 1}link-disabled{/if}">Previous</a></li>
-	    <li><a href="{if $page < $totalPage}index.php?page={$page + 1}{/if}" class="{if $page == $totalPage}link-disabled{/if}">Next</a></li>
+	    <li><a href="{if $page != 1}index.php?page={$page - 1}{/if}" class="{if $page == 1 || $page > $totalPage}link-disabled{/if}">Previous</a></li>
+	    <li><a href="{if $page < $totalPage}index.php?page={$page + 1}{/if}" class="{if $page >= $totalPage}link-disabled{/if}">Next</a></li>
 	  </ul>
  </div>
 
