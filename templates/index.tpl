@@ -8,7 +8,7 @@
             <div class="form-group">
                 <label for="date" class="col-sm-3 control-label">Date</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="date" id="date" value="{if !empty($smarty.cookies.search_date)}{$smarty.cookies.search_date}{/if}" placeholder="yyyy-mm-dd">
+                    <input type="text" class="form-control" name="date" id="date" value="{if !empty($date)}{$date}{/if}" placeholder="yyyy-mm-dd">
                 </div>
             </div>
         </div>
@@ -16,7 +16,7 @@
             <div class="form-group">
                 <label for="user_name" class="col-sm-3 control-label">User Name</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="user_name" id="user_name" value="{if !empty($smarty.cookies.search_user_name)}{$smarty.cookies.search_user_name}{/if}" placeholder="user name">
+                    <input type="text" class="form-control" name="user_name" id="user_name" value="{if !empty($user_name)}{$user_name}{/if}" placeholder="user name">
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@
             <div class="form-group">
                 <label for="server_number" class="col-sm-3 control-label">Server Number</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="server_number" id="server_number" value="{if !empty($smarty.cookies.search_server_number)}{$smarty.cookies.search_server_number}{/if}" placeholder="server number">
+                    <input type="text" class="form-control" name="server_number" id="server_number" value="{if !empty($server_number)}{$server_number}{/if}" placeholder="server number">
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
             <div class="form-group">
                 <label for="entry_number" class="col-sm-3 control-label">Entry Number</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="entry_number" id="entry_number" value="{if !empty($smarty.cookies.search_entry_number)}{$smarty.cookies.search_entry_number}{/if}" placeholder="enrty number">
+                    <input type="text" class="form-control" name="entry_number" id="entry_number" value="{if !empty($entry_number)}{$entry_number}{/if}" placeholder="enrty number">
                 </div>
             </div>
         </div>
@@ -78,12 +78,13 @@
   
 
 </div>
-
+{if $totalPage > 1}
  <div class="container text-center">
  	<ul class="pagination pagination-md">
-	    <li><a href="{if $page != 1}index.php?page={$page - 1}{/if}" class="{if $page == 1 || $page > $totalPage}link-disabled{/if}">Previous</a></li>
-	    <li><a href="{if $page < $totalPage}index.php?page={$page + 1}{/if}" class="{if $page >= $totalPage}link-disabled{/if}">Next</a></li>
+	    <li><a href="{if $page != 1}index.php?page={$page - 1}{/if}" class="{if $page == 1 || $page > $totalPage}link-disabled{/if}" id="prev">Previous</a></li>
+	    <li><a href="{if $page < $totalPage}index.php?page={$page + 1}{/if}" class="{if $page >= $totalPage}link-disabled{/if}" id="next">Next</a></li>
 	  </ul>
  </div>
+{/if}
 
 {include file="footer.tpl"}

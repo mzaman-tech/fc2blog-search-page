@@ -5,37 +5,45 @@ require 'db_config.php';
 
 $sql = 'select * from fc2blog where 1=1 ';
 $conditions = '';
+$smarty = new Smarty;
 
 if(!empty($_POST)){
 
 	//store data 
-	$date = $_POST['date'];
-	$user_name = $_POST['user_name'];
-	$server_number = $_POST['server_number'];
-	$entry_number = $_POST['entry_number'];
+	$date = $_COOKIE['date'] =  $_POST['date'];
+	$user_name = $_COOKIE['user_name'] = $_POST['user_name'];
+	$server_number = $_COOKIE['server_number'] = $_POST['server_number'];
+	$entry_number = $_COOKIE['entry_number'] = $_POST['entry_number'];
+}
 
-	//set cookie
-	$_COOKIE['search_date'] = $date;
-	$_COOKIE['search_user_name'] = $user_name;
-	$_COOKIE['search_server_number'] = $server_number;
-	$_COOKIE['search_entry_number'] = $entry_number;
+if(!empty($_GET)){
 
-	//process query
-	if(!empty($date)){
-		$conditions = $conditions. " and date = '". $date. "'";
-	}
+	//store data 
+	if(isset($_GET['date'])){$date = $_GET['date'];}else{$date = '';}
+	if(isset($_GET['user_name'])){$user_name = $_GET['user_name'];}else{$user_name = '';}
+	if(isset($_GET['server_number'])){$server_number = $_GET['server_number'];}else{$server_number = '';}
+	if(isset($_GET['entry_number'])){$entry_number = $_GET['entry_number'];}else{$entry_number = '';}
+}
 
-	if(!empty($user_name)){
-		$conditions = $conditions. " and user_name = '". $user_name. "'";		
-	}
+//process query
+if(!empty($date)){
+	$conditions = $conditions. " and date = '". $date. "'";
+	$smarty->assign('date', $date);
+}
 
-	if(!empty($server_number)){
-		$conditions = $conditions. " and server_number = '". $server_number. "'";		
-	}
+if(!empty($user_name)){
+	$conditions = $conditions. " and user_name = '". $user_name. "'";
+	$smarty->assign('user_name', $user_name);	
+}
 
-	if(!empty($entry_number)){
-		$conditions = $conditions. " and entry_number = '". $entry_number."'";		
-	}
+if(!empty($server_number)){
+	$conditions = $conditions. " and server_number = '". $server_number. "'";
+	$smarty->assign('server_number', $server_number);	
+}
+
+if(!empty($entry_number)){
+	$conditions = $conditions. " and entry_number = '". $entry_number."'";
+	$smarty->assign('entry_number', $entry_number);
 }
 
 
@@ -57,7 +65,7 @@ if($totalPage == 0){
 }
 
 //smarty
-$smarty = new Smarty;
+
 $smarty->assign('result', $result);
 $smarty->assign('perpage', $perpage);
 $smarty->assign('page', $page);

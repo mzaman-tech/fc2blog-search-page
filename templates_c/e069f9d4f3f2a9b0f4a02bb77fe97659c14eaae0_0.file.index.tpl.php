@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32-dev-38, created on 2017-11-29 09:51:55
+/* Smarty version 3.1.32-dev-38, created on 2017-11-30 11:15:35
   from 'C:\xampp\htdocs\fc2blog-search-page\templates\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32-dev-38',
-  'unifunc' => 'content_5a1e752b7243b3_87601549',
+  'unifunc' => 'content_5a1fda47c67f00_87006771',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e069f9d4f3f2a9b0f4a02bb77fe97659c14eaae0' => 
     array (
       0 => 'C:\\xampp\\htdocs\\fc2blog-search-page\\templates\\index.tpl',
-      1 => 1511945511,
+      1 => 1512036907,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5a1e752b7243b3_87601549 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5a1fda47c67f00_87006771 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>"Info"), 0, false);
 ?>
 
@@ -34,8 +34,8 @@ $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_sm
             <div class="form-group">
                 <label for="date" class="col-sm-3 control-label">Date</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="date" id="date" value="<?php if (!empty($_COOKIE['search_date'])) {
-echo $_COOKIE['search_date'];
+                    <input type="text" class="form-control" name="date" id="date" value="<?php if (!empty($_smarty_tpl->tpl_vars['date']->value)) {
+echo $_smarty_tpl->tpl_vars['date']->value;
 }?>" placeholder="yyyy-mm-dd">
                 </div>
             </div>
@@ -44,8 +44,8 @@ echo $_COOKIE['search_date'];
             <div class="form-group">
                 <label for="user_name" class="col-sm-3 control-label">User Name</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="user_name" id="user_name" value="<?php if (!empty($_COOKIE['search_user_name'])) {
-echo $_COOKIE['search_user_name'];
+                    <input type="text" class="form-control" name="user_name" id="user_name" value="<?php if (!empty($_smarty_tpl->tpl_vars['user_name']->value)) {
+echo $_smarty_tpl->tpl_vars['user_name']->value;
 }?>" placeholder="user name">
                 </div>
             </div>
@@ -57,8 +57,8 @@ echo $_COOKIE['search_user_name'];
             <div class="form-group">
                 <label for="server_number" class="col-sm-3 control-label">Server Number</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="server_number" id="server_number" value="<?php if (!empty($_COOKIE['search_server_number'])) {
-echo $_COOKIE['search_server_number'];
+                    <input type="text" class="form-control" name="server_number" id="server_number" value="<?php if (!empty($_smarty_tpl->tpl_vars['server_number']->value)) {
+echo $_smarty_tpl->tpl_vars['server_number']->value;
 }?>" placeholder="server number">
                 </div>
             </div>
@@ -67,8 +67,8 @@ echo $_COOKIE['search_server_number'];
             <div class="form-group">
                 <label for="entry_number" class="col-sm-3 control-label">Entry Number</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="entry_number" id="entry_number" value="<?php if (!empty($_COOKIE['search_entry_number'])) {
-echo $_COOKIE['search_entry_number'];
+                    <input type="text" class="form-control" name="entry_number" id="entry_number" value="<?php if (!empty($_smarty_tpl->tpl_vars['entry_number']->value)) {
+echo $_smarty_tpl->tpl_vars['entry_number']->value;
 }?>" placeholder="enrty number">
                 </div>
             </div>
@@ -118,15 +118,16 @@ $_smarty_tpl->_assignInScope('row', $_prefixVariable1);?>
   
 
 </div>
-
+<?php if ($_smarty_tpl->tpl_vars['totalPage']->value > 1) {?>
  <div class="container text-center">
  	<ul class="pagination pagination-md">
 	    <li><a href="<?php if ($_smarty_tpl->tpl_vars['page']->value != 1) {?>index.php?page=<?php echo $_smarty_tpl->tpl_vars['page']->value-1;
-}?>" class="<?php if ($_smarty_tpl->tpl_vars['page']->value == 1 || $_smarty_tpl->tpl_vars['page']->value > $_smarty_tpl->tpl_vars['totalPage']->value) {?>link-disabled<?php }?>">Previous</a></li>
+}?>" class="<?php if ($_smarty_tpl->tpl_vars['page']->value == 1 || $_smarty_tpl->tpl_vars['page']->value > $_smarty_tpl->tpl_vars['totalPage']->value) {?>link-disabled<?php }?>" id="prev">Previous</a></li>
 	    <li><a href="<?php if ($_smarty_tpl->tpl_vars['page']->value < $_smarty_tpl->tpl_vars['totalPage']->value) {?>index.php?page=<?php echo $_smarty_tpl->tpl_vars['page']->value+1;
-}?>" class="<?php if ($_smarty_tpl->tpl_vars['page']->value >= $_smarty_tpl->tpl_vars['totalPage']->value) {?>link-disabled<?php }?>">Next</a></li>
+}?>" class="<?php if ($_smarty_tpl->tpl_vars['page']->value >= $_smarty_tpl->tpl_vars['totalPage']->value) {?>link-disabled<?php }?>" id="next">Next</a></li>
 	  </ul>
  </div>
+<?php }?>
 
 <?php $_smarty_tpl->_subTemplateRender("file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 }
